@@ -1,0 +1,19 @@
+{
+  "name": "cinepolis",
+  "version": "1.0.0",
+  "description": "Proyecto final de la clase Temas Emergentes de Aplicaciones Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ganz0k/Cinepolis.git"
+  },
+  "author": "Christian Daniel Acedo Chaidez, Rafael Emilio Carballo Lopez & Luis Gonzalo Cervantes Rivera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ganz0k/Cinepolis/issues"
+  },
+  "homepage": "https://github.com/Ganz0k/Cinepolis#readme"
+}
