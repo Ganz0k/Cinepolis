@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Administradores.init({
     id_usuario: DataTypes.INTEGER,
-    permisos: DataTypes.STRING
+    permisos: DataTypes.JSON
   }, {
     sequelize,
     modelName: 'Administradores',

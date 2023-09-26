@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false
       },
       horarios: {
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
         allowNull: false
       },
       createdAt: {

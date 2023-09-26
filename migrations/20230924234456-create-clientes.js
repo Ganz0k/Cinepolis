@@ -18,7 +18,7 @@ module.exports = {
         }
       },
       historial_compras: {
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
         allowNull: false
       },
       createdAt: {

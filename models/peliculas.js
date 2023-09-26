@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: DataTypes.STRING,
     precio_boleto: DataTypes.DECIMAL,
     imagen: DataTypes.STRING,
-    horarios: DataTypes.STRING
+    horarios: DataTypes.JSON
   }, {
     sequelize,
     modelName: 'Peliculas',
