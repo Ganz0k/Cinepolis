@@ -18,7 +18,7 @@ module.exports = {
         }
       },
       permisos: {
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
         allowNull: false
       },
       createdAt: {

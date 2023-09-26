@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Carritos.init({
     id_usuario: DataTypes.INTEGER,
-    boletos: DataTypes.STRING
+    boletos: DataTypes.JSON
   }, {
     sequelize,
     modelName: 'Carritos',
