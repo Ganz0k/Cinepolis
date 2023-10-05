@@ -23,6 +23,7 @@ const usuarioSchema = new Mongoose.Schema({
     }],
     idCarrito: {
         type: Mongoose.Schema.Types.ObjectId,
+        ref: "carrito",
         required: false
     },
     historialCompras: [{
