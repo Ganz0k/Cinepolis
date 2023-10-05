@@ -3,6 +3,7 @@ const Mongoose = require("mongoose");
 const carritoSchema = new Mongoose.Schema({
     idUsuario: {
         type: Mongoose.Schema.Types.ObjectId,
+        ref: "usuario",
         required: true
     },
     boletos: [{
