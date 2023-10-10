@@ -4,18 +4,18 @@ class AdministradorDAO {
 
     static async crearAdministrador(administradorData) {
         try {
-            administradorData.rol = "administrador"; // Establece el rol como administrador
             const administrador = new Usuario(administradorData);
+
             return await administrador.save();
         } catch (error) {
             throw error;
         }
     }
 
-    static async obtenerAdministradorPorId(id) {
+    static async obtenerAdministrador(nombre, password) {
         try {
             // Busca un usuario con el rol de administrador
-            return await Usuario.findOne({ _id: id, rol: "administrador" });
+            return await Usuario.findOne({ nombre, password, rol: "administrador" });
         } catch (error) {
             throw error;
         }

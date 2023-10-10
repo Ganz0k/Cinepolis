@@ -1,4 +1,5 @@
 const Pelicula = require("../schemas/pelicula");
+const Mongoose = require("mongoose");
 
 class BoletoDAO {
 
@@ -21,13 +22,13 @@ class BoletoDAO {
     static async obtenerBoletoPorId(idPelicula, idBoleto) {
         try {
             const pelicula = await Pelicula.findById(idPelicula);
-            
+
             if (!pelicula) {
                 throw new Error("Película no encontrada");
             }
 
-            for (b of pelicula.boletos) {
-                if (b._id === idBoleto) {
+            for (let b of pelicula.boletos) {
+                if (new Mongoose.Types.ObjectId(b._id.toString()).equals(new Mongoose.Types.ObjectId(idBoleto.toString()))) {
                     return b;
                 }
             }
@@ -41,14 +42,15 @@ class BoletoDAO {
     static async actualizarBoleto(idPelicula, idBoleto, boletoData) {
         try {
             const pelicula = await Pelicula.findById(idPelicula);
-            
+
             if (!pelicula) {
                 throw new Error("Película no encontrada");
             }
 
-            for (b of pelicula.boletos) {
-                if (b._id === idBoleto) {
-                    b = boletoData;
+            for (let i = 0; i < pelicula.boletos.length; i++) {
+                if (new Mongoose.Types.ObjectId(pelicula.boletos[i]._id.toString()).equals(new Mongoose.Types.ObjectId(idBoleto.toString()))) {
+                    pelicula.boletos[i] = boletoData;
+
                     return await pelicula.save();
                 }
             }

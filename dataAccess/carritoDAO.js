@@ -1,5 +1,6 @@
 const Carrito = require("../schemas/carrito");
 const Pelicula = require("../schemas/pelicula");
+const Mongoose = require("mongoose");
 
 class CarritoDAO {
 
@@ -36,10 +37,10 @@ class CarritoDAO {
             const peliculas = await Pelicula.find();
             let boletos = [];
 
-            for (p of peliculas) {
-                for (b of p.boletos) {
-                    for (idB of idBoletos) {
-                        if (b._id === idB) {
+            for (let p of peliculas) {
+                for (let b of p.boletos) {
+                    for (let idB of idBoletos) {
+                        if (new Mongoose.Types.ObjectId(b._id.toString).equals(new Mongoose.Types.ObjectId(idB.toString()))) {
                             boletos.push(b);
                             break;
                         }

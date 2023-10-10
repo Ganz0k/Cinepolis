@@ -14,7 +14,7 @@ const peliculaSchema = new Mongoose.Schema({
         required: true
     },
     imagen: {
-        type: Blob,
+        type: Buffer,
         required: true
     },
     horarios: [{

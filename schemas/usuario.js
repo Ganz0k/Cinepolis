@@ -42,7 +42,11 @@ const usuarioSchema = new Mongoose.Schema({
         fechaPago: {
             type: Date,
             required: true
-        }
+        },
+        boletos: [{
+            type: Mongoose.Schema.Types.ObjectId,
+            required: true
+        }]
     }]
 });
 
