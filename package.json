@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/Ganz0k/Cinepolis#readme",
   "dependencies": {
-    "mongoose": "^7.5.3"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-winston": "^4.2.0",
+    "mongoose": "^7.5.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1",
+    "winston": "^3.11.0"
   }
 }
