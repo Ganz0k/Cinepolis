@@ -1,7 +1,8 @@
 const Mongoose = require("mongoose");
+require("dotenv").config({ path: "../variables.env" });
 
 const config = {
-    url: "mongodb://127.0.0.1:27017/cinepolis",
+    url: process.env.URL_MONGO || "mongodb://127.0.0.1:27017/cinepolis",
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true

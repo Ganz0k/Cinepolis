@@ -13,7 +13,7 @@ class BoletoDAO {
 
             pelicula.boletos.push(boletoData);
 
-            return await pelicula.save();
+            return (await pelicula.save()).boletos[pelicula.boletos.length - 1];
         } catch (error) {
             throw error;
         }
@@ -51,7 +51,7 @@ class BoletoDAO {
                 if (new Mongoose.Types.ObjectId(pelicula.boletos[i]._id.toString()).equals(new Mongoose.Types.ObjectId(idBoleto.toString()))) {
                     pelicula.boletos[i] = boletoData;
 
-                    return await pelicula.save();
+                    return (await pelicula.save()).boletos[i];
                 }
             }
 
