@@ -15,7 +15,7 @@ class PagoDAO {
 
             cliente.historialCompras.push(pagoData);
 
-            return (await cliente.save()).historialCompras[cliente.historialCompras.length - 1];
+            return await cliente.save();
         } catch (error) {
             throw error;
         }
@@ -31,7 +31,7 @@ class PagoDAO {
 
             for (hC of cliente.historialCompras) {
                 if (new Mongoose.Types.Object(hC._id.toString()).equals(new Mongoose.Types.Object(idPago))) {
-                    return hC;
+                    return hC
                 }
             }
 
