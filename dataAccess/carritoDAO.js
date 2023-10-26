@@ -40,7 +40,7 @@ class CarritoDAO {
             for (let p of peliculas) {
                 for (let b of p.boletos) {
                     for (let idB of idBoletos) {
-                        if (new Mongoose.Types.ObjectId(b._id.toString).equals(new Mongoose.Types.ObjectId(idB.toString()))) {
+                        if (new Mongoose.Types.ObjectId(b._id.toString()).equals(new Mongoose.Types.ObjectId(idB.toString()))) {
                             boletos.push(b);
                             break;
                         }

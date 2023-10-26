@@ -61,7 +61,7 @@ class CarritoController {
 
     static async obtenerBoletosPorIdCarrito(req, res, next) {
         try {
-            const id = req.parms.id;
+            const id = req.params.id;
 
             if (!id) {
                 return next(new AppError("El campo id es obligatorio", 500));

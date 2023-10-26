@@ -9,3 +9,19 @@
 {"level":"error","message":"Los campos id, nombre, correoElectronico, password, rol y permisos son oligatorios"}
 {"level":"error","message":"Error al actualizar el administrador"}
 {"level":"error","message":"Error al eliminar el administrador"}
+{"level":"error","message":"Los campos idPelicula, asiento, horario y estado son obligatorios"}
+{"level":"error","message":"Error al crear el boleto"}
+{"level":"error","message":"Los campos idPelicula, idBoleto, asiento, horario y estado son obligatorios"}
+{"level":"error","message":"Unexpected token } in JSON at position 54"}
+{"level":"error","message":"Los campos idUsuario y boletos son obligatorios"}
+{"level":"error","message":"No se logró econtrar el carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"No se logró econtrar el carrito"}
+{"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
