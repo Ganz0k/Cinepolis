@@ -9,7 +9,7 @@ class BoletoController {
             const { idPelicula, idUsuario, asiento, horario, estado } = req.body;
 
             if (!idPelicula || !asiento || !horario || !estado) {
-                next(new AppError("Los campos idPelicula, asiento, horario y estado son obligatorios", 500));
+                return next(new AppError("Los campos idPelicula, asiento, horario y estado son obligatorios", 500));
             }
 
             const boleto = new Boleto(undefined, idUsuario, asiento, horario, estado);
@@ -27,13 +27,13 @@ class BoletoController {
             const idBoleto = req.params.idBoleto;
 
             if (!idPelicula || !idBoleto) {
-                next(new AppError("Los campos idPelicula y idBoleto son obligatorios", 500));
+                return next(new AppError("Los campos idPelicula y idBoleto son obligatorios", 500));
             }
 
             const boleto = await BoletoDAO.obtenerBoletoPorId(idPelicula, idBoleto);
 
             if (!boleto) {
-                next(new AppError("No se encontró el boleto", 404));
+                return next(new AppError("No se encontró el boleto", 404));
             }
 
             res.status(200).json(boleto);
@@ -49,7 +49,7 @@ class BoletoController {
             const { idUsuario, asiento, horario, estado } = req.body;
 
             if (!idPelicula || !idBoleto || !asiento || !horario || !estado) {
-                next(new AppError("Los campos idPelicula, idBoleto, asiento, horario y estado son obligatorios", 500));
+                return next(new AppError("Los campos idPelicula, idBoleto, asiento, horario y estado son obligatorios", 500));
             }
 
             const boleto = new Boleto(idBoleto, idUsuario, asiento, horario, estado);
@@ -66,13 +66,13 @@ class BoletoController {
             const idPelicula = req.params.idPelicula;
 
             if (!idPelicula) {
-                next(new AppError("El campo idPelicula es obligatorio", 500));
+                return next(new AppError("El campo idPelicula es obligatorio", 500));
             }
 
             const boletos = await BoletoDAO.obtenerBoletosPorPelicula(idPelicula);
 
             if (!boletos) {
-                next(new AppError("No se encontraron los boletos", 404));
+                return next(new AppError("No se encontraron los boletos", 404));
             }
 
             res.status(200).json(boletos);
