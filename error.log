@@ -1,0 +1,11 @@
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"Los campos nombre, correo electrónico, password, y permisos son obligatorios"}
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"Los campos nombre, correo electrónico, password, y permisos son obligatorios"}
+{"level":"error","message":"Los campos nombre, correo electrónico, password, y permisos son obligatorios"}
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"No se encontró el administrador"}
+{"level":"error","message":"No se pudo acceder a la ruta especificada"}
+{"level":"error","message":"Los campos id, nombre, correoElectronico, password, rol y permisos son oligatorios"}
+{"level":"error","message":"Error al actualizar el administrador"}
+{"level":"error","message":"Error al eliminar el administrador"}

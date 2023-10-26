@@ -1,6 +1,8 @@
+require("dotenv").config({ path: "../variables.env" });
 const Administrador = require("../models/administrador");
 const AdministradorDAO = require("../dataAccess/administradorDAO");
 const { AppError } = require("../utils/appError");
+const jwt = require("jsonwebtoken");
 
 class AdministradorController {
     
@@ -9,13 +11,13 @@ class AdministradorController {
             const { nombre, correoElectronico, password, permisos } = req.body;
 
             if (!nombre || !correoElectronico || !password || !permisos) {
-                next(new AppError("Los campos nombre, correo electrónico, password, y permisos son obligatorios", 500));
+                return next(new AppError("Los campos nombre, correo electrónico, password, y permisos son obligatorios", 500));
             }
 
             const expresionRegular = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
             if (!expresionRegular.test(correoElectronico)) {
-                next(new AppError("Correo inválido", 500));
+                return next(new AppError("Correo inválido", 500));
             }
 
             const administrador = new Administrador(nombre, correoElectronico, password, undefined, permisos);
@@ -33,15 +35,18 @@ class AdministradorController {
             const password = req.params.password;
 
             if (!nombre || !password) {
-                next(new AppError("Los campos nombre y password son obligatorios", 500));
+                return next(new AppError("Los campos nombre y password son obligatorios", 500));
             }
 
             const administrador = await AdministradorDAO.obtenerAdministrador(nombre, password);
 
             if (!administrador) {
-                next(new AppError("No se encontró el administrador", 404));
+                return next(new AppError("No se encontró el administrador", 404));
             }
 
+            // const accessToken = jwt.sign(administrador, process.env.ACCESS_TOKEN_SECRET);
+
+            // res.status(200).json({ accessToken: accessToken });
             res.status(200).json(administrador);
         } catch (error) {
             next(new AppError("No se logró obtener el administrador", 404));   
@@ -54,13 +59,13 @@ class AdministradorController {
             const { nombre, correoElectronico, password, rol, permisos } = req.body;
 
             if (!id || !nombre || !correoElectronico || !password || !rol || !permisos) {
-                next(new AppError("Los campos id, nombre, correoElectronic, password, rol y permisos son oligatorios", 500));
+                return next(new AppError("Los campos id, nombre, correoElectronico, password, rol y permisos son oligatorios", 500));
             }
 
             const expresionRegular = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
             if (!expresionRegular.test(correoElectronico)) {
-                next(AppError("Correo inválido", 500));
+                return next(AppError("Correo inválido", 500));
             }
 
             const administrador = new Administrador(nombre, correoElectronico, password, rol, permisos);
@@ -77,13 +82,13 @@ class AdministradorController {
             const id = req.params.id;
 
             if (!id) {
-                next(new AppError("Faltan campos obligatorios", 500));
+                return next(new AppError("Faltan campos obligatorios", 500));
             }
 
             const administradorEliminado = await AdministradorDAO.eliminarAdministrador(id);
 
             if (!administradorEliminado) {
-                next(new AppError("No se encontró el administrador", 404));
+                return next(new AppError("No se encontró el administrador", 404));
             }
 
             res.status(200).json({ message: "Administrador eliminado correctamente" });

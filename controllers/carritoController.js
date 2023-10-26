@@ -9,7 +9,7 @@ class CarritoController {
             const { idUsuario, boletos } = req.body;
 
             if (!idUsuario || !boletos) {
-                next(new AppError("Los campos idUsuario y boletos son obligatorios", 500));
+                return next(new AppError("Los campos idUsuario y boletos son obligatorios", 500));
             }
 
             const carrito = new Carrito(idUsuario, boletos);
@@ -26,13 +26,13 @@ class CarritoController {
             const id = req.params.id;
 
             if (!id) {
-                next(new AppError("El campo id es obligatorio", 500));
+                return next(new AppError("El campo id es obligatorio", 500));
             }
 
             const carrito = await CarritoDAO.obtenerCarritoPorId(id);
 
             if (!carrito) {
-                next(new AppError("No se encontró el carrito", 404));
+                return next(new AppError("No se encontró el carrito", 404));
             }
 
             res.status(200).json(carrito);
@@ -47,7 +47,7 @@ class CarritoController {
             const { idUsuario, boletos } = req.body;
 
             if (!id || !idUsuario || !boletos) {
-                next(new AppError("Los campos id, idUsuario y boletos son obligatorios", 500));
+                return next(new AppError("Los campos id, idUsuario y boletos son obligatorios", 500));
             }
 
             const carrito = new Carrito(idUsuario, boletos);
@@ -55,7 +55,7 @@ class CarritoController {
 
             res.status(200).json(carritoActualizado);
         } catch (error) {
-            next(new AppError("Error al actualizar el carrito", 500));
+            return next(new AppError("Error al actualizar el carrito", 500));
         }
     }
 
@@ -64,13 +64,13 @@ class CarritoController {
             const id = req.parms.id;
 
             if (!id) {
-                next(new AppError("El campo id es obligatorio", 500));
+                return next(new AppError("El campo id es obligatorio", 500));
             }
 
             const boletos = await CarritoDAO.obtenerBoletosPorIdCarrito(id);
 
             if (!boletos) {
-                next(new AppError("No se encontraron los boletos", 404));
+                return next(new AppError("No se encontraron los boletos", 404));
             }
 
             res.status(200).json(boletos);
