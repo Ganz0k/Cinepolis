@@ -14,10 +14,16 @@ app.use(morgan("combined"));
 const administradorRouter = require("./routes/administradorRouter");
 const boletoRouter = require("./routes/boletoRouter");
 const carritoRouter = require("./routes/carritoRouter");
+const clienteRouter = require("./routes/clienteRouter");
+const pagoRouter = require("./routes/pagoRouter");
+const peliculaRouter = require("./routes/peliculaRouter");
 
 app.use("/api/administradores", administradorRouter);
 app.use("/api/boletos", boletoRouter);
 app.use("/api/carritos", carritoRouter);
+app.use("/api/clientes", clienteRouter);
+app.use("/api/pagos", pagoRouter);
+app.use("/api/peliculas", peliculaRouter);
 
 app.all("*", (req, res, next) => {
     next(new AppError("No se pudo acceder a la ruta especificada", 404));
