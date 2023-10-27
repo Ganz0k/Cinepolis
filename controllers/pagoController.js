@@ -9,7 +9,7 @@ class PagoController {
             const { idCliente, monto, metodoPago, fechaPago, boletos } = req.body;
 
             if (!idCliente || !monto || !metodoPago || !fechaPago || !boletos) {
-                next(new AppError("Los campos idCliente, monto, metodoPago, fechaPago y boletos son obligatorios", 500));
+                return next(new AppError("Los campos idCliente, monto, metodoPago, fechaPago y boletos son obligatorios", 500));
             }
 
             const pago = new Pago(undefined, monto, metodoPago, fechaPago, boletos);
@@ -27,13 +27,13 @@ class PagoController {
             const idPago = req.params.idPago;
 
             if (!idCliente || !idPago) {
-                next(new AppError("Los campos idCliente y idPago son obligatorios", 500));
+                return next(new AppError("Los campos idCliente y idPago son obligatorios", 500));
             }
 
             const pago = await PagoDAO.obtenerPagoPorId(idCliente, idPago);
 
             if (!pago) {
-                next(new AppError("No se pudo encontrar el pago", 404));
+                return next(new AppError("No se pudo encontrar el pago", 404));
             }
 
             res.status(200).json(pago);
@@ -47,13 +47,13 @@ class PagoController {
             const idCliente = req.params.idCliente;
 
             if (!idCliente) {
-                next(new AppError("El campo idCliente es obligatorio", 500));
+                return next(new AppError("El campo idCliente es obligatorio", 500));
             }
 
             const pagos = await PagoDAO.obtenerPagosDeCliente(idCliente);
 
             if (!pagos) {
-                next(new AppError("No se encontraron los pagos", 404));
+                return next(new AppError("No se encontraron los pagos", 404));
             }
 
             res.status(200).json(pagos);

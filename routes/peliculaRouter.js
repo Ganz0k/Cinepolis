@@ -6,6 +6,6 @@ router.post("/", PeliculaController.crearPelicula);
 router.get("/:id", PeliculaController.obtenerPeliculaPorId);
 router.put("/:id", PeliculaController.actualizarPelicula);
 router.delete("/:id", PeliculaController.eliminarPelicula);
-router.get("/:limit", PeliculaController.obtenerPeliculas);
+router.get("/:limit/todas", PeliculaController.obtenerPeliculas);
 
 module.exports = router;

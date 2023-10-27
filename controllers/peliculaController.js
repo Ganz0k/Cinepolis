@@ -9,7 +9,7 @@ class PeliculaController {
             const { nombre, descripcion, precioBoleto, imagen, horarios } = req.body;
 
             if (!nombre || !descripcion || !precioBoleto || !imagen || !horarios) {
-                next(new AppError("Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios", 500));
+                return ext(new AppError("Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios", 500));
             }
 
             const pelicula = new Pelicula(nombre, descripcion, precioBoleto, imagen, horarios, []);
@@ -26,13 +26,13 @@ class PeliculaController {
             const id = req.params.id;
 
             if (!id) {
-                next(new AppError("El campo id es obligatorio", 500));
+                return next(new AppError("El campo id es obligatorio", 500));
             }
 
             const pelicula = await PeliculaDAO.obtenerPeliculaPorId(id);
 
             if (!pelicula) {
-                next(new AppError("No se pudo encontrar la película", 404));
+                return next(new AppError("No se pudo encontrar la película", 404));
             }
 
             res.status(200).json(pelicula);
@@ -47,7 +47,7 @@ class PeliculaController {
             const { nombre, descripcion, precioBoleto, imagen, horarios, boletos } = req.body;
 
             if (!id || !nombre || !descripcion || !precioBoleto || !imagen || !horarios || !boletos) {
-                next(new AppError("Los campos id, nombre, descripcion, precioBoleto, imagen, horarios y boletos son obligatorios", 500));
+                return next(new AppError("Los campos id, nombre, descripcion, precioBoleto, imagen, horarios y boletos son obligatorios", 500));
             }
 
             const pelicula = new Pelicula(nombre, descripcion, precioBoleto, imagen, horarios, boletos);
@@ -64,13 +64,13 @@ class PeliculaController {
             const id = req.params.id;
 
             if (!id) {
-                next(new AppError("El campo id es obligatorio", 500));
+                return next(new AppError("El campo id es obligatorio", 500));
             }
 
             const peliculaEliminada = await PeliculaDAO.eliminarPelicula(id);
 
             if (!peliculaEliminada) {
-                next(new AppError("No se encontró la película", 404));
+                return next(new AppError("No se encontró la película", 404));
             }
 
             res.status(200).json({ message: "Película eliminada correctamente" });
@@ -86,7 +86,7 @@ class PeliculaController {
             const peliculas = await PeliculaDAO.obtenerPeliculas(limit);
 
             if (!peliculas) {
-                next(new AppError("No se pudieron encontrar las películas", 404));
+                return next(new AppError("No se pudieron encontrar las películas", 404));
             }
 
             res.status(200).json(peliculas);

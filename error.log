@@ -25,3 +25,11 @@
 {"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
 {"level":"error","message":"No se logró econtrar el carrito"}
 {"level":"error","message":"No se pudieron encontrar los boletos del carrito"}
+{"level":"error","message":"Los campos nombre, correoEelectronico y password son obligatorios"}
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"Los campos idCliente, monto, metodoPago, fechaPago y boletos son obligatorios"}
+{"level":"error","message":"No se pudo encontrar el pago"}
+{"level":"error","message":"No se pudo encontrar el pago"}
+{"level":"error","message":"No se pudo encontrar el pago"}
+{"level":"error","message":"No se pudo obtener la película"}

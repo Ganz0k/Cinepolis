@@ -29,8 +29,8 @@ class PagoDAO {
                 throw new Error("Cliente no encontrado");
             }
 
-            for (hC of cliente.historialCompras) {
-                if (new Mongoose.Types.Object(hC._id.toString()).equals(new Mongoose.Types.Object(idPago))) {
+            for (let hC of cliente.historialCompras) {
+                if (new Mongoose.Types.ObjectId(hC._id.toString()).equals(new Mongoose.Types.ObjectId(idPago.toString()))) {
                     return hC;
                 }
             }
