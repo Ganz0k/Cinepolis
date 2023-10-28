@@ -1,6 +1,8 @@
+require("dotenv").config({ path: "../variables.env" });
 const Cliente = require("../models/cliente");
 const ClienteDAO = require("../dataAccess/clienteDAO");
 const { AppError } = require("../utils/appError");
+const jwt = require("jsonwebtoken");
 
 class ClienteController {
     
@@ -21,7 +23,9 @@ class ClienteController {
             const cliente = new Cliente(nombre, correoElectronico, password, undefined, null, []);
             const clienteRegistrado = await ClienteDAO.crearCliente(cliente);
 
-            res.status(200).json(clienteRegistrado);
+            const accessToken = jwt.sign(clienteRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+
+            res.status(200).json({ accessToken: accessToken });
         } catch (error) {
             next(new AppError("Error al crear el cliente", 500))
         }
@@ -42,7 +46,9 @@ class ClienteController {
                 return next(new AppError("No se encontró el cliente", 404));
             }
 
-            res.status(200).json(cliente);
+            const accessToken = jwt.sign(cliente.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+
+            res.status(200).json({ accessToken: accessToken });
         } catch (error) {
             next(new AppError("No se pudo obtener el cliente", 404));
         }
@@ -66,7 +72,9 @@ class ClienteController {
             const cliente = new Cliente(nombre, correoElectronico, password, rol, idCarrito, historialCompras);
             const clienteActualizado = await ClienteDAO.actualizarCliente(id, cliente);
 
-            res.status(200).json(clienteActualizado);
+            const accessToken = jwt.sign(clienteActualizado.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+
+            res.status(200).json({ accessToken: accessToken });
         } catch (error) {
             next(new AppError("Error al actualizar el cliente", 500));
         }

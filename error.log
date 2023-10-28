@@ -33,3 +33,8 @@
 {"level":"error","message":"No se pudo encontrar el pago"}
 {"level":"error","message":"No se pudo encontrar el pago"}
 {"level":"error","message":"No se pudo obtener la película"}
+{"level":"error","message":"No se logró obtener el administrador"}
+{"level":"error","message":"No se logró obtener el administrador"}
+{"level":"error","message":"jwt is not defined"}
+{"level":"error","message":"El administrador no puede crear películas"}
+{"level":"error","message":"No se logró obtener el administrador"}

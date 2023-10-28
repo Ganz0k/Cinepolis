@@ -36,9 +36,9 @@ class PeliculaDAO {
         }
     }
 
-    static async obtenerPeliculas(limit = 10) {
+    static async obtenerPeliculas() {
         try {
-            return await Pelicula.find().limit(limit);
+            return await Pelicula.find();
         } catch (error) {
             throw error;
         }
