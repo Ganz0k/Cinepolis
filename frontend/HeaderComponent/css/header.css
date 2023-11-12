@@ -1,0 +1,60 @@
+header {
+    background-color: #002069;
+    width: 100vw;
+    height: 79px;
+    display: flex;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+header img {
+    width: 79px;
+    height: 79px;
+    object-fit: contain;
+    padding-left: 24px;
+}
+
+#logo-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.user-name {
+    padding-left: 10%;
+    padding-top: 22px;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.right-header {
+    padding-left: 50%;
+}
+
+.right-header button {
+    background-color: #EEC233;
+    width: 144px;
+    height: 36px;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.right-header img {
+    width: 79px;
+    height: 79px;
+    object-fit: contain;
+    padding-left: 24px;
+}
+
+#monto-carrito {
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
