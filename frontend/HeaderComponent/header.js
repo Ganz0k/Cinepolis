@@ -10,8 +10,16 @@ export default class HeaderComponent extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         await this.#render(shadow);
 
-        if (this.#location == "/frontend/index.html") {
-            this.#default(shadow);
+        switch (this.#location) {
+            case "/frontend/index.html":
+                this.#default(shadow);
+                break;
+            case "/frontend/cliente.html":
+                this.#cliente(shadow);
+                break;
+            case "/frontend/carrito.html":
+                this.#carrito(shadow);
+                break;
         }
     }
 
@@ -32,5 +40,41 @@ export default class HeaderComponent extends HTMLElement {
         btnLogin.setAttribute("id", "btn-login");
         btnLogin.innerHTML = "INICIAR SESIÓN";
         rightHeader.appendChild(btnLogin);
+    }
+
+    #cliente(shadow) {
+        let rightHeader = shadow.querySelector(".right-header");
+        let userName = shadow.querySelector(".user-name");
+
+        userName.innerHTML = "Luis Gonzalo Cervantes Rivera";
+        
+        let imgCarrito = document.createElement("img");
+        imgCarrito.setAttribute("src", "./HeaderComponent/images/carrito.png");
+        imgCarrito.setAttribute("alt", "logo");
+        rightHeader.appendChild(imgCarrito);
+
+        let montoCarrito = document.createElement("span");
+        montoCarrito.setAttribute("id", "monto-carrito");
+        montoCarrito.innerHTML = "$0.00";
+
+        rightHeader.appendChild(montoCarrito);
+    }
+
+    #carrito(shadow) {
+        let rightHeader = shadow.querySelector(".right-header");
+        let userName = shadow.querySelector(".user-name");
+
+        userName.innerHTML = "Luis Gonzalo Cervantes Rivera";
+        
+        let imgCarrito = document.createElement("img");
+        imgCarrito.setAttribute("src", "./HeaderComponent/images/carrito.png");
+        imgCarrito.setAttribute("alt", "logo");
+        rightHeader.appendChild(imgCarrito);
+
+        let montoCarrito = document.createElement("span");
+        montoCarrito.setAttribute("id", "monto-carrito");
+        montoCarrito.innerHTML = "$201.00";
+
+        rightHeader.appendChild(montoCarrito);
     }
 }

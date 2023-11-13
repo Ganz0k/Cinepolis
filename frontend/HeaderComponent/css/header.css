@@ -22,16 +22,13 @@ header img {
 }
 
 .user-name {
+    width: 570px;
     padding-left: 10%;
-    padding-top: 22px;
+    margin-top: 20px;
     color: #FFF;
     font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-weight: 700;
-}
-
-.right-header {
-    padding-left: 50%;
 }
 
 .right-header button {
@@ -49,7 +46,6 @@ header img {
     width: 79px;
     height: 79px;
     object-fit: contain;
-    padding-left: 24px;
 }
 
 #monto-carrito {
