@@ -1,0 +1,18 @@
+.pelicula-container {
+    margin-top: 52px;
+    display: flex;
+}
+
+img {
+    width: 314px;
+    height: 430px;
+    padding-left: 24px;
+}
+
+#titulo {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: -.9%;
+}

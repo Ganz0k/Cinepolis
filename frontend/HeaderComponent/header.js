@@ -11,14 +11,14 @@ export default class HeaderComponent extends HTMLElement {
         await this.#render(shadow);
 
         switch (this.#location) {
-            case "/frontend/index.html":
-                this.#default(shadow);
-                break;
             case "/frontend/cliente.html":
                 this.#cliente(shadow);
                 break;
             case "/frontend/carrito.html":
                 this.#carrito(shadow);
+                break;
+            default:
+                this.#default(shadow);
                 break;
         }
     }
