@@ -1,4 +1,5 @@
 import HeaderComponent from "./HeaderComponent/header.js";
+import CarteleraComponent from "./CarteleraComponent/cartelera.js";
 import FooterComponent from "./FooterComponent/footer.js";
 import LoginComponent from "./LoginComponent/login.js";
 import SignUpComponent from "./SignUpComponent/signUp.js";
@@ -19,5 +20,3 @@ window.customElements.define("carrito-list", CarritoComponent);
 window.customElements.define("pelicula-details", PeliculaComponent);
 window.customElements.define("asientos-info", AsientoComponent);
 window.customElements.define("administrar-pelicula", AdminPeliculaComponent);
-window.customElements.define("boleto-info", BoletoComponent);
-window.customElements.define("check-out", CheckOutComponent);
