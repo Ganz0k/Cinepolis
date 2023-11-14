@@ -17,6 +17,12 @@ export default class HeaderComponent extends HTMLElement {
             case "/frontend/carrito.html":
                 this.#carrito(shadow);
                 break;
+            case "/frontend/admin.html":
+                this.#admin(shadow);
+                break;
+            case "/frontend/adminPelicula.html":
+                this.#admin(shadow);
+                break;
             default:
                 this.#default(shadow);
                 break;
@@ -76,5 +82,11 @@ export default class HeaderComponent extends HTMLElement {
         montoCarrito.innerHTML = "$201.00";
 
         rightHeader.appendChild(montoCarrito);
+    }
+
+    #admin(shadow) {
+        let userName = shadow.querySelector(".user-name");
+
+        userName.innerHTML = "Admin1";
     }
 }

@@ -1,5 +1,5 @@
-export default class CarteleraComponent extends HTMLElement {
-    
+export default class AdminMenuComponent extends HTMLElement {
+
     constructor() {
         super();
     }
@@ -10,11 +10,13 @@ export default class CarteleraComponent extends HTMLElement {
     }
 
     async #render(shadow) {
-        await fetch("./CarteleraComponent/carteleraCinemapolis.html")
+        await fetch("./AdminMenuComponent/adminMenuCinemapolis.html")
             .then(response => response.text())
             .then(html => {
                 shadow.innerHTML += html;
             })
-            .catch("Error loading HTML: " + error);
+            .catch(error => {
+                console.error("Error loading HTML: " + error);
+            });
     }
 }
