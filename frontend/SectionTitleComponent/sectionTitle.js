@@ -30,6 +30,12 @@ export default class SectionTitleComponent extends HTMLElement {
             case "/frontend/carrito.html":
                 title.innerHTML = "CARRITO";
                 break;
+            case "/frontend/boletoComprado.html":
+                title.innerHTML = "Disfrute";
+                break;
+            case "/frontend/checkOut.html":
+                title.innerHTML = "CheckOut";
+                break;
             default:
                 title.innerHTML = "CARTELERA";
                 break;

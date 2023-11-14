@@ -20,32 +20,13 @@ p {
     font-size: 16px;
 }
 
-.buttons-box {
-    width: 928px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#btn-pay-all {
-    margin-left: 128px;
-}
-
-#btn-delete-selected {
-    margin-left: 128px;
-}
-
-.boletos-box {
-    width: 1036px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 74px;
-}
-
 .boleto {
     background-color: #D9D9D9;
     width: 1036px;
     display: flex;
-    margin-bottom: 34px;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .boleto img {
@@ -68,4 +49,44 @@ p {
 .precio-details {
     width: 165px;
     padding-left: 10%;
+}
+
+.pago {
+    width: 486px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-top: 5%;
+}
+
+.metodos-container {
+    display: flex;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.metodo img {
+    width: 120px;
+    height: 120px;
+}
+
+.metodo {
+    margin-left: 10%;
+}
+
+#label-form {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    padding-left: 12%;
+}
+
+#btn-comprar {
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+#btn-cancelar {
+    margin-left: 20%;
 }

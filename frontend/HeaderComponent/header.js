@@ -49,7 +49,7 @@ export default class HeaderComponent extends HTMLElement {
         userName.innerHTML = "Luis Gonzalo Cervantes Rivera";
         
         let imgCarrito = document.createElement("img");
-        imgCarrito.setAttribute("src", "./HeaderComponent/images/carrito.png");
+        imgCarrito.setAttribute("src", "./images/carrito.png");
         imgCarrito.setAttribute("alt", "logo");
         rightHeader.appendChild(imgCarrito);
 
@@ -67,7 +67,7 @@ export default class HeaderComponent extends HTMLElement {
         userName.innerHTML = "Luis Gonzalo Cervantes Rivera";
         
         let imgCarrito = document.createElement("img");
-        imgCarrito.setAttribute("src", "./HeaderComponent/images/carrito.png");
+        imgCarrito.setAttribute("src", "./images/carrito.png");
         imgCarrito.setAttribute("alt", "logo");
         rightHeader.appendChild(imgCarrito);
 

@@ -36,7 +36,7 @@ export default class CarritoComponent extends HTMLElement {
                 case 0:
                     clone = template.content.cloneNode(true);
                     element = clone.querySelector("#imagen-pelicula");
-                    element.setAttribute("src", "./CarritoComponent/images/shin_godzilla.jpg");
+                    element.setAttribute("src", "./images/shin_godzilla.jpg");
                     element.setAttribute("alt", "pelicula");
 
                     element = clone.querySelector("#titulo");
@@ -56,7 +56,7 @@ export default class CarritoComponent extends HTMLElement {
                 case 1:
                     clone = template.content.cloneNode(true);
                     element = clone.querySelector("#imagen-pelicula");
-                    element.setAttribute("src", "./CarritoComponent/images/across_the_spiderverse.jpg");
+                    element.setAttribute("src", "./images/across_the_spiderverse.jpg");
                     element.setAttribute("alt", "pelicula");
 
                     element = clone.querySelector("#titulo");

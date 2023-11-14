@@ -7,6 +7,8 @@ import CarritoComponent from "./CarritoComponent/carrito.js";
 import PeliculaComponent from "./PeliculaComponent/pelicula.js";
 import AsientoComponent from "./AsientoComponent/asiento.js";
 import AdminPeliculaComponent from "./AdminPeliculaComponent/adminPelicula.js";
+import BoletoComponent from "./BoletoComponent/boleto.js";
+import CheckOutComponent from "./CheckOutComponent/checkOut.js";
 
 window.customElements.define("header-info", HeaderComponent);
 window.customElements.define("footer-info", FooterComponent);
@@ -17,3 +19,5 @@ window.customElements.define("carrito-list", CarritoComponent);
 window.customElements.define("pelicula-details", PeliculaComponent);
 window.customElements.define("asientos-info", AsientoComponent);
 window.customElements.define("administrar-pelicula", AdminPeliculaComponent);
+window.customElements.define("boleto-info", BoletoComponent);
+window.customElements.define("check-out", CheckOutComponent);
