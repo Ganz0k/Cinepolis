@@ -5,6 +5,9 @@ const morgan = require("morgan");
 const { AppError, globalHandleError } = require("./utils/appError");
 require("dotenv").config({ path: "./variables.env" });
 const db = require("./config/db");
+const cors = require("cors");
+
+app.use(cors());
 
 db.conectar();
 

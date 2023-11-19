@@ -7,7 +7,7 @@ router.post("/", autentificarToken, PeliculaController.crearPelicula);
 router.get("/:id", PeliculaController.obtenerPeliculaPorId);
 router.put("/:id", autentificarToken, PeliculaController.actualizarPelicula);
 router.delete("/:id", autentificarToken, PeliculaController.eliminarPelicula);
-router.get("/:limit/todas", PeliculaController.obtenerPeliculas);
+router.get("/", PeliculaController.obtenerPeliculas);
 
 function autentificarToken(req, res, next) {
     const authHeader = req.headers["authorization"];
