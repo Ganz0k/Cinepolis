@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/Ganz0k/Cinepolis.git"
   },
-  "author": "Christian Daniel Acedo Chaidez, Rafael Emilio Carballo Lopez & Luis Gonzalo Cervantes Rivera",
+  "author": "Christian Daniel Acedo Chaidez & Luis Gonzalo Cervantes Rivera",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ganz0k/Cinepolis/issues"
   },
   "homepage": "https://github.com/Ganz0k/Cinepolis#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-winston": "^4.2.0",
