@@ -12,6 +12,65 @@ import BoletoComponent from "./BoletoComponent/boleto.js";
 import CheckOutComponent from "./CheckOutComponent/checkOut.js";
 import AdminMenuComponent from "./AdminMenuComponent/adminMenu.js";
 
+document.addEventListener("DOMContentLoaded", function () {
+    page("/frontend/", () => showCartelera());
+    page("/frontend/iniciarSesion", () => showLogin());
+    page("/frontend/registrarse", () => showSignUp());
+    page("/frontend/pelicula", () => showPelicula());
+    page("*", () => showCartelera());
+
+    page();
+});
+
+function showCartelera() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+        
+        <section-title></section-title>
+        <cartelera-info></cartelera-info>
+
+        <footer-info></footer-info>
+    `;
+}
+
+function showPelicula() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+        
+        <pelicula-details></pelicula-details>
+
+        <footer-info></footer-info>
+    `;
+}
+
+function showLogin() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+        
+        <login-form></login-form>
+
+        <footer-info></footer-info>
+    `;
+}
+
+function showSignUp() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+
+        <sign-up-form></sign-up-form>
+        
+        <footer-info></footer-info>
+    `;
+}
+
 window.customElements.define("header-info", HeaderComponent);
 window.customElements.define("footer-info", FooterComponent);
 window.customElements.define("login-form", LoginComponent);

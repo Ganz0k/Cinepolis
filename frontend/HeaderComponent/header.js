@@ -1,7 +1,5 @@
 export default class HeaderComponent extends HTMLElement {
 
-    #location = window.location.pathname;
-
     constructor() {
         super();
     }
@@ -9,8 +7,11 @@ export default class HeaderComponent extends HTMLElement {
     async connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
         await this.#render(shadow);
+        const location = window.location.pathname;
+        console.log(location);
+        this.#agregarListenerLogo(shadow);
 
-        switch (this.#location) {
+        switch (location) {
             case "/frontend/cliente.html":
                 this.#cliente(shadow);
                 break;
@@ -22,6 +23,10 @@ export default class HeaderComponent extends HTMLElement {
                 break;
             case "/frontend/adminPelicula.html":
                 this.#admin(shadow);
+                break;
+            case "/frontend/iniciarSesion":
+                break;
+            case "/frontend/registrarse":
                 break;
             default:
                 this.#default(shadow);
@@ -45,6 +50,11 @@ export default class HeaderComponent extends HTMLElement {
         let btnLogin = document.createElement("button");
         btnLogin.setAttribute("id", "btn-login");
         btnLogin.innerHTML = "INICIAR SESIÓN";
+
+        btnLogin.addEventListener("click", function () {
+            page("/frontend/iniciarSesion");
+        });
+
         rightHeader.appendChild(btnLogin);
     }
 
@@ -88,5 +98,18 @@ export default class HeaderComponent extends HTMLElement {
         let userName = shadow.querySelector(".user-name");
 
         userName.innerHTML = "Admin1";
+    }
+
+    #agregarListenerLogo(shadow) {
+        let imagen = shadow.querySelector("img");
+        let texto = shadow.querySelector("#logo-text");
+
+        imagen.addEventListener("click", function () {
+            page("/frontend/");
+        });
+
+        texto.addEventListener("click", function () {
+           page("/frontend/"); 
+        });
     }
 }

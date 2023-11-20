@@ -4,9 +4,10 @@ export default class SignUpComponent extends HTMLElement {
         super();
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
-        this.#render(shadow);
+        await this.#render(shadow);
+        this.#agregarListenerBotonInicioSesion(shadow);
     }
 
     async #render(shadow) {
@@ -18,5 +19,13 @@ export default class SignUpComponent extends HTMLElement {
             .catch(error => {
                 console.error("Error loading HTML: " + error);
             });
+    }
+
+    #agregarListenerBotonInicioSesion(shadow) {
+        let botonInicioSesion = shadow.querySelector("#btn-login");
+
+        botonInicioSesion.addEventListener("click", function () {
+            page("/frontend/iniciarSesion");
+        });
     }
 }

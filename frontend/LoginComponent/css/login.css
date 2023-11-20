@@ -1,4 +1,4 @@
-form {
+div {
     width: 738px;
     height: 732px;
     border-radius: 48px;
@@ -39,7 +39,7 @@ input::placeholder {
     font-weight: 400;
 }
 
-form button {
+button {
     width: 297px;
     height: 58px;
     background-color: #EEC233;

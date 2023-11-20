@@ -36,13 +36,14 @@ export default class CarteleraComponent extends HTMLElement {
             .then(data => {
                 data.forEach(pelicula => {
                     let blob = new Blob([new Uint8Array(pelicula.imagen.data)], { type: "image/jpg" });
+                    let url = URL.createObjectURL(blob);
 
                     clone = template.content.cloneNode(true);
                     element = clone.querySelector("a");
-                    element.setAttribute("data-id", pelicula._id);
+                    element.setAttribute("href", `/frontend/pelicula?id=${pelicula._id}&imagen=${url}`);
 
                     element = clone.querySelector("img");
-                    element.setAttribute("src", URL.createObjectURL(blob));
+                    element.setAttribute("src", url);
                     element.setAttribute("alt", pelicula.nombre);
 
                     div.appendChild(clone);

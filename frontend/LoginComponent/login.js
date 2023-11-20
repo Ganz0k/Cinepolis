@@ -4,9 +4,10 @@ export default class LoginComponent extends HTMLElement {
         super();
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
-        this.#render(shadow);
+        await this.#render(shadow);
+        this.#agregarListenerBotonRegistro(shadow);
     }
 
     async #render(shadow) {
@@ -18,5 +19,13 @@ export default class LoginComponent extends HTMLElement {
             .catch(error => {
                 console.error("Error loading HTML: " + error);
             });
+    }
+
+    #agregarListenerBotonRegistro(shadow) {
+        let botonRegistro = shadow.querySelector("#register-button");
+
+        botonRegistro.addEventListener("click", function () {
+            page("/frontend/registrarse");
+        });
     }
 }
