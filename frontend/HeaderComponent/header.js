@@ -104,11 +104,11 @@ export default class HeaderComponent extends HTMLElement {
         let texto = shadow.querySelector("#logo-text");
 
         imagen.addEventListener("click", function () {
-            page("/frontend/");
+            page("/frontend/index.html");
         });
 
         texto.addEventListener("click", function () {
-           page("/frontend/"); 
+           page("/frontend/index.html"); 
         });
     }
 }
