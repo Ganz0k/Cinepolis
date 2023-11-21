@@ -13,11 +13,12 @@ import CheckOutComponent from "./CheckOutComponent/checkOut.js";
 import AdminMenuComponent from "./AdminMenuComponent/adminMenu.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    page("/frontend/", () => showCartelera());
+    page("/frontend/index.html", () => showCartelera());
     page("/frontend/iniciarSesion", () => showLogin());
     page("/frontend/registrarse", () => showSignUp());
     page("/frontend/pelicula", () => showPelicula());
-    page("*", () => showCartelera());
+    page("/frontend/asientos", () => showAsientos());
+    page("/frontend/checkOut", () => showCheckOut());
 
     page();
 });
@@ -67,6 +68,31 @@ function showSignUp() {
 
         <sign-up-form></sign-up-form>
         
+        <footer-info></footer-info>
+    `;
+}
+
+function showAsientos() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+
+        <asientos-info></asientos-info>
+
+        <footer-info></footer-info>
+    `;
+}
+
+function showCheckOut() {
+    const body = document.querySelector("body");
+
+    body.innerHTML = `
+        <header-info></header-info>
+        <section-title></section-title>
+
+        <check-out></check-out>
+
         <footer-info></footer-info>
     `;
 }

@@ -8,7 +8,6 @@ export default class HeaderComponent extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         await this.#render(shadow);
         const location = window.location.pathname;
-        console.log(location);
         this.#agregarListenerLogo(shadow);
 
         switch (location) {
