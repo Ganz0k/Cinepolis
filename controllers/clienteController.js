@@ -23,7 +23,7 @@ class ClienteController {
             const cliente = new Cliente(nombre, correoElectronico, password, undefined, null, []);
             const clienteRegistrado = await ClienteDAO.crearCliente(cliente);
 
-            const accessToken = jwt.sign(clienteRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign(clienteRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -46,7 +46,7 @@ class ClienteController {
                 return next(new AppError("No se encontró el cliente", 404));
             }
 
-            const accessToken = jwt.sign(cliente.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign(cliente.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {

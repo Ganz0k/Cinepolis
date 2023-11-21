@@ -23,7 +23,7 @@ class AdministradorController {
             const administrador = new Administrador(nombre, correoElectronico, password, undefined, permisos);
             const administradorRegistrado = await AdministradorDAO.crearAdministrador(administrador);
 
-            const accessToken = jwt.sign(administradorRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign(administradorRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -46,7 +46,7 @@ class AdministradorController {
                 return next(new AppError("No se encontró el administrador", 404));
             }
 
-            const accessToken = jwt.sign(administrador.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+            const accessToken = jwt.sign(administrador.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
