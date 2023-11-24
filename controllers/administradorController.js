@@ -23,7 +23,12 @@ class AdministradorController {
             const administrador = new Administrador(nombre, correoElectronico, password, undefined, permisos);
             const administradorRegistrado = await AdministradorDAO.crearAdministrador(administrador);
 
-            const accessToken = jwt.sign(administradorRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
+            const dataToSign = {
+                idAdministrador: administradorRegistrado._id,
+                rol: administradorRegistrado.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -31,7 +36,7 @@ class AdministradorController {
         }
     }
 
-    static async obtenerAdministrador(req, res, next) {
+    static async iniciarSesion(req, res, next) {
         try {
             const nombre = req.params.nombre;
             const password = req.params.password;
@@ -46,7 +51,12 @@ class AdministradorController {
                 return next(new AppError("No se encontró el administrador", 404));
             }
 
-            const accessToken = jwt.sign(administrador.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
+            const dataToSign = {
+                idAdministrador: administrador._id,
+                rol: administrador.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -72,7 +82,12 @@ class AdministradorController {
             const administrador = new Administrador(nombre, correoElectronico, password, rol, permisos);
             const administradorActualizado = await AdministradorDAO.actualizarAdministrador(id, administrador);
 
-            const accessToken = jwt.sign(administradorActualizado.toJSON(), process.enc.ACCESS_TOKEN_SECRET);
+            const dataToSign = {
+                idAdministrador: administradorActualizado._id,
+                rol: administradorActualizado.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.enc.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -97,6 +112,30 @@ class AdministradorController {
             res.status(200).json({ message: "Administrador eliminado correctamente" });
         } catch (error) {
             next(new AppError("Error al eliminar el administrador", 404));
+        }
+    }
+
+    static async obtenerPermisosAdministrador(req, res, next) {
+        try {
+            let isAdministrador = false;
+
+            if (req.administrador.rol === "administrador") {
+                isAdministrador = true;
+            }
+
+            if (!isAdministrador) {
+                return next(new AppError("No es administrador", 403));
+            }
+
+            const administrador = await AdministradorDAO.obtenerAdministradorPorId(req.administrador.idAdministrador);
+
+            if (!administrador) {
+                return next(new AppError("No se encontró el administrador", 404));
+            }
+
+            res.status(200).json({ permisos: administrador.permisos });
+        } catch (error) {
+            next(new AppError("Error al obtener el administrador", 404));
         }
     }
 }

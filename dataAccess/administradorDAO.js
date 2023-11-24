@@ -39,6 +39,13 @@ class AdministradorDAO {
         }
     }
 
+    static async obtenerAdministradorPorId(id) {
+        try {
+            return await Usuario.findOne({ _id: id, rol: "administrador" });
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = AdministradorDAO;

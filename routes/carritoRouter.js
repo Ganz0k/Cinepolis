@@ -1,5 +1,7 @@
+require("dotenv").config({ path: "../variables.env" });
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 const CarritosController = require("../controllers/carritoController");
 
 router.post("/", autentificarToken, CarritosController.crearCarrito);

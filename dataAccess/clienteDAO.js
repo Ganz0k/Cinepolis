@@ -39,6 +39,13 @@ class ClienteDAO {
         }
     }
 
+    static async obtenerClientePorId(id) {
+        try {
+            return await Usuario.findOne({ _id: id, rol: "cliente" });
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = ClienteDAO;

@@ -23,7 +23,12 @@ class ClienteController {
             const cliente = new Cliente(nombre, correoElectronico, password, undefined, null, []);
             const clienteRegistrado = await ClienteDAO.crearCliente(cliente);
 
-            const accessToken = jwt.sign(clienteRegistrado.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
+            const dataToSign = {
+                idCliente: clienteRegistrado._id,
+                rol: clienteRegistrado.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -46,7 +51,12 @@ class ClienteController {
                 return next(new AppError("No se encontró el cliente", 404));
             }
 
-            const accessToken = jwt.sign(cliente.toJSON(), process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
+            const dataToSign = {
+                idCliente: cliente._id,
+                rol: cliente.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -72,7 +82,12 @@ class ClienteController {
             const cliente = new Cliente(nombre, correoElectronico, password, rol, idCarrito, historialCompras);
             const clienteActualizado = await ClienteDAO.actualizarCliente(id, cliente);
 
-            const accessToken = jwt.sign(clienteActualizado.toJSON(), process.env.ACCESS_TOKEN_SECRET);
+            const dataToSign = {
+                idCliente: clienteActualizado._id,
+                rol: clienteActualizado.rol
+            };
+
+            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
 
             res.status(200).json({ accessToken: accessToken });
         } catch (error) {
@@ -97,6 +112,22 @@ class ClienteController {
             res.status(200).json({ message: "Cliente eliminado correctamente" });
         } catch (error) {
             next(new AppError("Error al eliminar el cliente", 404));
+        }
+    }
+
+    static async obtenerCarritoCliente(req, res, next) {
+        try {
+            let isCliente = false;
+
+            if (req.cliente.rol === "cliente") {
+                isCliente = true;
+            }
+
+            const cliente = await ClienteDAO.obtenerClientePorId(req.cliente.idCliente);
+
+            res.status(200).json({ idCarrito: cliente.idCarrito });
+        } catch (error) {
+            next(new AppError("Error al buscar el cliente", 404));
         }
     }
 }
