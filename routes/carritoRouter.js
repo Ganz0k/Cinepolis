@@ -8,6 +8,7 @@ router.post("/", autentificarToken, CarritosController.crearCarrito);
 router.get("/:id", autentificarToken, CarritosController.obtenerCarritoPorId);
 router.put("/:id", autentificarToken, CarritosController.actualizarCarrito);
 router.get("/:id/boletos", autentificarToken, CarritosController.obtenerBoletosPorIdCarrito);
+router.get("/:id/total", autentificarToken, CarritosController.obtenerTotalPrecioBoletosPorIdCarrito);
 
 function autentificarToken(req, res, next) {
     const authHeader = req.headers["authorization"];
@@ -18,11 +19,11 @@ function autentificarToken(req, res, next) {
     }
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, cliente) => {
-        if (err) {
+        if (err || cliente.rol !== "cliente") {
             return res.sendStatus(403);
         }
 
-        req.cliente = cliente;
+        req.cliente = cliente.idUsuario;
         next();
     });
 }

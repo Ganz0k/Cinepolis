@@ -43,3 +43,13 @@
 {"level":"error","message":"No se pudo obtener la película"}
 {"level":"error","message":"No se pudo obtener la película"}
 {"level":"error","message":"No se pudo obtener la película"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"No se encontró el cliente"}
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"Correo inválido"}
+{"level":"error","message":"No se pudo acceder a la ruta especificada"}
+{"level":"error","message":"Error al crear el carrito"}
+{"level":"error","message":"Error al crear el carrito"}

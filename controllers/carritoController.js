@@ -6,18 +6,14 @@ class CarritoController {
 
     static async crearCarrito(req, res, next) {
         try {
-            const { idUsuario, boletos } = req.body;
-
-            if (!idUsuario || !boletos) {
-                return next(new AppError("Los campos idUsuario y boletos son obligatorios", 500));
-            }
-
-            const carrito = new Carrito(idUsuario, boletos);
+            const idUsuario = req.cliente;
+            const carrito = new Carrito(idUsuario, []);
             const carritoCreado = await CarritoDAO.crearCarrito(carrito);
 
             res.status(200).json(carritoCreado);
         } catch (error) {
             next(new AppError("Error al crear el carrito", 500));
+            console.log(error);
         }
     }
 
@@ -43,11 +39,12 @@ class CarritoController {
 
     static async actualizarCarrito(req, res, next) {
         try {
-            const id = req.params.id;
-            const { idUsuario, boletos } = req.body;
+            const idUsuario = req.cliente;
+            const id = req.params.id
+            const boletos = req.body;
 
-            if (!id || !idUsuario || !boletos) {
-                return next(new AppError("Los campos id, idUsuario y boletos son obligatorios", 500));
+            if (!id || !boletos) {
+                return next(new AppError("Los campos id y boletos son obligatorios", 500));
             }
 
             const carrito = new Carrito(idUsuario, boletos);
@@ -74,6 +71,22 @@ class CarritoController {
             }
 
             res.status(200).json(boletos);
+        } catch (error) {
+            next(new AppError("No se pudieron encontrar los boletos del carrito", 404));
+        }
+    }
+
+    static async obtenerTotalPrecioBoletosPorIdCarrito(req, res, next) {
+        try {
+            const id = req.params.id;
+
+            if (!id) {
+                return next(new AppError("El campo id es obligatorio", 500));
+            }
+
+            const total = await CarritoDAO.obtenerTotalPrecioBoletosPorIdCarrito(id);
+            
+            res.status(200).json({ total });
         } catch (error) {
             next(new AppError("No se pudieron encontrar los boletos del carrito", 404));
         }

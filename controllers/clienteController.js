@@ -24,7 +24,7 @@ class ClienteController {
             const clienteRegistrado = await ClienteDAO.crearCliente(cliente);
 
             const dataToSign = {
-                idCliente: clienteRegistrado._id,
+                idUsuario: clienteRegistrado._id,
                 rol: clienteRegistrado.rol
             };
 
@@ -36,37 +36,10 @@ class ClienteController {
         }
     }
 
-    static async obtenerCliente(req, res, next) {
-        try {
-            const nombre = req.params.nombre;
-            const password = req.params.password;
-
-            if (!nombre || !password) {
-                return next(new AppError("Los campos nombre y password son obligatorios", 500));
-            }
-
-            const cliente = await ClienteDAO.obtenerCliente(nombre, password);
-
-            if (!cliente) {
-                return next(new AppError("No se encontró el cliente", 404));
-            }
-
-            const dataToSign = {
-                idCliente: cliente._id,
-                rol: cliente.rol
-            };
-
-            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
-
-            res.status(200).json({ accessToken: accessToken });
-        } catch (error) {
-            next(new AppError("No se pudo obtener el cliente", 404));
-        }
-    }
-
     static async actualizarCliente(req, res, next) {
         try {
-            const id = req.params.id;
+            const id = req.cliente;
+
             const { nombre, correoElectronico, password, rol, idCarrito, historialCompras } = req.body;
 
             if (!id || !nombre || !correoElectronico || !password || !rol || !idCarrito || !historialCompras) {
@@ -80,52 +53,19 @@ class ClienteController {
             }
 
             const cliente = new Cliente(nombre, correoElectronico, password, rol, idCarrito, historialCompras);
-            const clienteActualizado = await ClienteDAO.actualizarCliente(id, cliente);
+            await ClienteDAO.actualizarCliente(id, cliente);
 
-            const dataToSign = {
-                idCliente: clienteActualizado._id,
-                rol: clienteActualizado.rol
-            };
-
-            const accessToken = jwt.sign(dataToSign, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
-
-            res.status(200).json({ accessToken: accessToken });
+            res.status(200).json({ message: "Cliente actualizado :)" });
         } catch (error) {
             next(new AppError("Error al actualizar el cliente", 500));
         }
     }
 
-    static async eliminarCliente(req, res, next) {
+    static async obtenerCliente(req, res, next) {
         try {
-            const id = req.params.id;
+            const cliente = await ClienteDAO.obtenerClientePorId(req.cliente);
 
-            if (!id) {
-                return next(new AppError("El campo id es obligatorio", 500));
-            }
-
-            const clienteEliminado = await ClienteDAO.eliminarCliente(id);
-
-            if (!clienteEliminado) {
-                return next(new AppError("No se encontró el cliente", 404));
-            }
-
-            res.status(200).json({ message: "Cliente eliminado correctamente" });
-        } catch (error) {
-            next(new AppError("Error al eliminar el cliente", 404));
-        }
-    }
-
-    static async obtenerCarritoCliente(req, res, next) {
-        try {
-            let isCliente = false;
-
-            if (req.cliente.rol === "cliente") {
-                isCliente = true;
-            }
-
-            const cliente = await ClienteDAO.obtenerClientePorId(req.cliente.idCliente);
-
-            res.status(200).json({ idCarrito: cliente.idCarrito });
+            res.status(200).json(cliente);
         } catch (error) {
             next(new AppError("Error al buscar el cliente", 404));
         }

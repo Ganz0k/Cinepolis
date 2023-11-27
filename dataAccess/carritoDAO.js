@@ -53,6 +53,29 @@ class CarritoDAO {
             throw error;
         }
     }
+
+    static async obtenerTotalPrecioBoletosPorIdCarrito(id) {
+        try {
+            const carrito = await Carrito.findById(id);
+            const idBoletos = carrito.boletos;
+            const peliculas = await Pelicula.find();
+            let precioTotal = 0;
+
+            for (let p of peliculas) {
+                for (let b of p.boletos) {
+                    for (let idB of idBoletos) {
+                        if (new Mongoose.Types.ObjectId(b._id.toString()).equals(new Mongoose.Types.ObjectId(idB.toString()))) {
+                            precioTotal += p.precioBoleto;
+                        }
+                    }
+                }
+            }
+
+            return precioTotal;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = CarritoDAO;

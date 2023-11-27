@@ -19,11 +19,10 @@ function autentificarToken(req, res, next) {
     }
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, administrador) => {
-        if (err) {
+        if (err || administrador.rol !== "administrador") {
             return res.sendStatus(403);
         }
 
-        req.administrador = administrador;
         next();
     });
 }

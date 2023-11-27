@@ -20,6 +20,7 @@ const carritoRouter = require("./routes/carritoRouter");
 const clienteRouter = require("./routes/clienteRouter");
 const pagoRouter = require("./routes/pagoRouter");
 const peliculaRouter = require("./routes/peliculaRouter");
+const usuarioRouter = require("./routes/usuarioRouter");
 
 app.use("/api/administradores", administradorRouter);
 app.use("/api/boletos", boletoRouter);
@@ -27,6 +28,7 @@ app.use("/api/carritos", carritoRouter);
 app.use("/api/clientes", clienteRouter);
 app.use("/api/pagos", pagoRouter);
 app.use("/api/peliculas", peliculaRouter);
+app.use("/api/usuarios", usuarioRouter);
 
 app.all("*", (req, res, next) => {
     next(new AppError("No se pudo acceder a la ruta especificada", 404));

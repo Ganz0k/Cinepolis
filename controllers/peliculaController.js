@@ -6,18 +6,6 @@ class PeliculaController {
 
     static async crearPelicula(req, res, next) {
         try {
-            let tienePermiso = false;
-
-            for (let p of req.administrador.permisos) {
-                if (p === "Crear películas") {
-                    tienePermiso = true;
-                }
-            }
-
-            if (!tienePermiso) {
-                return next(new AppError("El administrador no puede crear películas", 403));
-            }
-
             const { nombre, descripcion, precioBoleto, imagen, horarios } = req.body;
 
             if (!nombre || !descripcion || !precioBoleto || !imagen || !horarios) {
@@ -55,18 +43,6 @@ class PeliculaController {
 
     static async actualizarPelicula(req, res, next) {
         try {
-            let tienePermiso = false;
-
-            for (let p of req.administrador.permisos) {
-                if (p === "Actualizar películas") {
-                    tienePermiso = true;
-                }
-            }
-
-            if (!tienePermiso) {
-                return next(new AppError("El administrador no puede actualizar películas", 403));
-            }
-
             const id = req.params.id;
             const { nombre, descripcion, precioBoleto, imagen, horarios, boletos } = req.body;
 
@@ -85,18 +61,6 @@ class PeliculaController {
 
     static async eliminarPelicula(req, res, next) {
         try {
-            let tienePermiso = false;
-
-            for (let p of req.administrador.permisos) {
-                if (p === "Eliminar películas") {
-                    tienePermiso = true;
-                }
-            }
-            
-            if (!tienePermiso) {
-                return next(new AppError("El administrador no puede eliminar películas", 403));
-            }
-
             const id = req.params.id;
 
             if (!id) {
