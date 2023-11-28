@@ -6,10 +6,11 @@ class PagoController {
 
     static async crearPago(req, res, next) {
         try {
-            const { idCliente, monto, metodoPago, fechaPago, boletos } = req.body;
+            const idCliente = req.cliente;
+            const { monto, metodoPago, fechaPago, boletos } = req.body;
 
-            if (!idCliente || !monto || !metodoPago || !fechaPago || !boletos) {
-                return next(new AppError("Los campos idCliente, monto, metodoPago, fechaPago y boletos son obligatorios", 500));
+            if (!monto || !metodoPago || !fechaPago || !boletos) {
+                return next(new AppError("Los campos monto, metodoPago, fechaPago y boletos son obligatorios", 500));
             }
 
             const pago = new Pago(undefined, monto, metodoPago, fechaPago, boletos);
@@ -23,11 +24,11 @@ class PagoController {
 
     static async obtenerPagoPorId(req, res, next) {
         try {
-            const idCliente = req.params.idCliente;
+            const idCliente = req.cliente;
             const idPago = req.params.idPago;
 
-            if (!idCliente || !idPago) {
-                return next(new AppError("Los campos idCliente y idPago son obligatorios", 500));
+            if (!idPago) {
+                return next(new AppError("El campo idPago es obligatorio", 500));
             }
 
             const pago = await PagoDAO.obtenerPagoPorId(idCliente, idPago);
@@ -44,12 +45,7 @@ class PagoController {
 
     static async obtenerPagosDeCliente(req, res, next) {
         try {
-            const idCliente = req.params.idCliente;
-
-            if (!idCliente) {
-                return next(new AppError("El campo idCliente es obligatorio", 500));
-            }
-
+            const idCliente = req.cliente;
             const pagos = await PagoDAO.obtenerPagosDeCliente(idCliente);
 
             if (!pagos) {
