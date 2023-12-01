@@ -35,20 +35,30 @@ class CarritoDAO {
             const carrito = await Carrito.findById(id);
             const idBoletos = carrito.boletos;
             const peliculas = await Pelicula.find();
-            let boletos = [];
+            let peliculasEnCarrito = [];
 
             for (let p of peliculas) {
+                peliculasEnCarrito.push({
+                    idPelicula: p._id,
+                    titulo: p.nombre,
+                    sinopsis: p.descripcion,
+                    imagen: p.imagen,
+                    precioBoleto: p.precioBoleto,
+                    boletos: []
+                });
+
                 for (let b of p.boletos) {
                     for (let idB of idBoletos) {
                         if (new Mongoose.Types.ObjectId(b._id.toString()).equals(new Mongoose.Types.ObjectId(idB.toString()))) {
-                            boletos.push(b);
+                            let pelicula = peliculasEnCarrito[peliculasEnCarrito.length - 1];
+                            pelicula.boletos.push(b);
                             break;
                         }
                     }
                 }
             }
 
-            return boletos;
+            return peliculasEnCarrito;
         } catch (error) {
             throw error;
         }

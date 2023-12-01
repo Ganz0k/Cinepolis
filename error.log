@@ -59,3 +59,5 @@
 {"level":"error","message":"jwt is not defined"}
 {"level":"error","message":"jwt is not defined"}
 {"level":"error","message":"jwt is not defined"}
+{"level":"error","message":"Los campos monto, metodoPago, fechaPago y boletos son obligatorios"}
+{"level":"error","message":"Los campos idPelicula, idBoleto, asiento, horario y estado son obligatorios"}
