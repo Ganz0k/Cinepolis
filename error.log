@@ -61,3 +61,18 @@
 {"level":"error","message":"jwt is not defined"}
 {"level":"error","message":"Los campos monto, metodoPago, fechaPago y boletos son obligatorios"}
 {"level":"error","message":"Los campos idPelicula, idBoleto, asiento, horario y estado son obligatorios"}
+{"level":"error","message":"Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios"}
+{"level":"error","message":"Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios"}
+{"level":"error","message":"Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios"}
+{"level":"error","message":"Los campos nombre, descripcion, precioBoleto, imagen y horarios son obligatorios"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"request entity too large"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Error al crear la película"}
+{"level":"error","message":"Los campos id, nombre, descripcion, precioBoleto, imagen, horarios y boletos son obligatorios"}

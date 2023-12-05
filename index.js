@@ -11,7 +11,7 @@ app.use(cors());
 
 db.conectar();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "10mb" }));
 app.use(morgan("combined"));
 
 const administradorRouter = require("./routes/administradorRouter");

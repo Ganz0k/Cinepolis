@@ -1,0 +1,167 @@
+[{
+  "_id": {
+    "$oid": "653abfc3e05aa47c6761d627"
+  },
+  "nombre": "Admin1",
+  "correoElectronico": "admin1@gmail.com",
+  "password": "admin1234",
+  "rol": "administrador",
+  "permisos": [
+    "Crear películas",
+    "Actualizar películas",
+    "Eliminar películas"
+  ],
+  "historialCompras": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65641dbb014b8759c7fb1fee"
+  },
+  "nombre": "Ganzok",
+  "correoElectronico": "luisgonzalocervantes@gmail.com",
+  "password": "ganzok1$",
+  "rol": "cliente",
+  "permisos": [],
+  "idCarrito": {
+    "$oid": "65641dbb014b8759c7fb1ff0"
+  },
+  "historialCompras": [
+    {
+      "_id": {
+        "$oid": "65664196d93d8367df6a51f0"
+      },
+      "monto": 134,
+      "metodoPago": "tarjeta",
+      "fechaPago": {
+        "$date": "2023-11-28T19:37:58.678Z"
+      },
+      "boletos": [
+        {
+          "$oid": "65664196d93d8367df6a51ea"
+        },
+        {
+          "$oid": "65664196d93d8367df6a51ed"
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "65698d3ad260e4d4b9915dc5"
+      },
+      "monto": 67,
+      "metodoPago": "paypal",
+      "fechaPago": {
+        "$date": "2023-12-01T07:37:30.811Z"
+      },
+      "boletos": [
+        {
+          "$oid": "65698abdd260e4d4b9915d83"
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "65698d68d260e4d4b9915dda"
+      },
+      "monto": 201,
+      "metodoPago": "paypal",
+      "fechaPago": {
+        "$date": "2023-12-01T07:38:16.840Z"
+      },
+      "boletos": [
+        {
+          "$oid": "6568ea34baa41160dcc355f1"
+        },
+        {
+          "$oid": "6568ea25baa41160dcc355d6"
+        },
+        {
+          "$oid": "6568ea25baa41160dcc355d9"
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "656a6df6b696cb68178bd60b"
+      },
+      "monto": 402,
+      "metodoPago": "paypal",
+      "fechaPago": {
+        "$date": "2023-12-01T23:36:22.812Z"
+      },
+      "boletos": [
+        {
+          "$oid": "65698da9d260e4d4b9915df2"
+        },
+        {
+          "$oid": "65698da9d260e4d4b9915df5"
+        },
+        {
+          "$oid": "65698da9d260e4d4b9915df8"
+        },
+        {
+          "$oid": "65698da9d260e4d4b9915dfb"
+        },
+        {
+          "$oid": "656a6dd7b696cb68178bd5d0"
+        },
+        {
+          "$oid": "656a6dd7b696cb68178bd5d3"
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "656a734bb696cb68178bd714"
+      },
+      "monto": 402,
+      "metodoPago": "paypal",
+      "fechaPago": {
+        "$date": "2023-12-01T23:59:07.326Z"
+      },
+      "boletos": [
+        {
+          "$oid": "656a6e47b696cb68178bd620"
+        },
+        {
+          "$oid": "656a6e47b696cb68178bd623"
+        },
+        {
+          "$oid": "656a6e47b696cb68178bd626"
+        },
+        {
+          "$oid": "656a6e47b696cb68178bd629"
+        },
+        {
+          "$oid": "656a733cb696cb68178bd6f3"
+        },
+        {
+          "$oid": "656a733cb696cb68178bd6f6"
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "656a753bb696cb68178bd748"
+      },
+      "monto": 201,
+      "metodoPago": "tarjeta",
+      "fechaPago": {
+        "$date": "2023-12-02T00:07:23.555Z"
+      },
+      "boletos": [
+        {
+          "$oid": "656a6db9b696cb68178bd5b8"
+        },
+        {
+          "$oid": "656a752fb696cb68178bd730"
+        },
+        {
+          "$oid": "656a752fb696cb68178bd733"
+        }
+      ]
+    }
+  ],
+  "__v": 6
+}]
